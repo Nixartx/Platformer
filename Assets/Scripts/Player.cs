@@ -85,6 +85,8 @@ public class Player : MonoBehaviour
         }
         StartFallTrigger();
         CheckArrow();
+
+        GameManager.Instance.PlayerMoveDirection = _axisX;
     }
 
     private void StartFallTrigger()

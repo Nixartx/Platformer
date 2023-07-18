@@ -15,6 +15,12 @@ public class GameManager : MonoBehaviour
     public Dictionary<GameObject, ItemComponent> itemsContainer = new();
     public Dictionary<GameObject, BuffReciever> buffRecieversContainer = new();
     public ItemBase itemDataBase;
+    private float playerMoveDirection;
+    public float PlayerMoveDirection
+    {
+        get { return playerMoveDirection; }
+        set { playerMoveDirection = value; }
+    }
     [HideInInspector] public Inventory inventory;
     [SerializeField] public GameObject inventoryUI;
 
