@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Dictionary<GameObject, ItemComponent> itemsContainer = new();
     public Dictionary<GameObject, BuffReciever> buffRecieversContainer = new();
     public ItemBase itemDataBase;
+    public CharacterUIController CharacterUIController;
     private float playerMoveDirection;
     public float PlayerMoveDirection
     {
