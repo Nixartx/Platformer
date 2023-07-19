@@ -18,11 +18,12 @@ public class Arrow : MonoBehaviour, IObgectDestroy
     }
 
     
-    public void SetImpulse(Vector2 direction, Player player)
+    public void SetImpulse(Vector2 direction, Player player, int bonusDamage)
     {
         this.player = player;
         _triggerDamage.Init(this);
         _triggerDamage.Parent = player.gameObject; 
+        _triggerDamage.Damage += bonusDamage;
         _rigidbody.AddForce(direction * _force, ForceMode2D.Impulse);
         StartCoroutine(LifeTime());
     }

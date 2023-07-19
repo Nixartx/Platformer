@@ -26,6 +26,9 @@ public class Player : MonoBehaviour
     }
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
+
+    private float bonusJumpForce;
+    private float bonusDamage;
     
     private bool _isCooldown;
     private bool _isJumping;
@@ -47,7 +50,7 @@ public class Player : MonoBehaviour
             tempArrow.gameObject.SetActive(false);
         }
 
-        _buffReciever.OnBuffsChanged += TestDelegate;
+        _buffReciever.OnBuffsChanged += ApplyBuffs;
     }
 
     public void InitCharacterUIController()
@@ -57,9 +60,15 @@ public class Player : MonoBehaviour
         _controller.AttackBtn.onClick.AddListener(ShootCall);
     }
 
-    private void TestDelegate()
+    private void ApplyBuffs()
     {
-        Debug.Log("Delegate method is called");
+        var jumpForceBuff = _buffReciever.Buffs.Find(t => t.type == BuffType.Force);
+        var damageBuff = _buffReciever.Buffs.Find(t => t.type == BuffType.Damage);
+        //var armorBuff = _buffReciever.Buffs.Find(t => t.type == BuffType.Armor);
+        bonusJumpForce = jumpForceBuff == null ? 0 : jumpForceBuff.additiveBinus;
+        bonusDamage = damageBuff == null ? 0 : damageBuff.additiveBinus;
+        //var bonusHealth = armorBuff == null ? 0 : armorBuff.additiveBinus;
+        //_health.SetHealth((int)bonusHealth);
     }
 
     private void Update()
@@ -100,7 +109,7 @@ public class Player : MonoBehaviour
         {
             _animator.SetTrigger("StartJump");
             _isJumping = true;
-            _playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            _playerRb.AddForce(Vector2.up * (jumpForce + bonusJumpForce), ForceMode2D.Impulse);
             _isJumpPressed = false;
         }
         StartFallTrigger();
@@ -155,7 +164,7 @@ public class Player : MonoBehaviour
         var arrow = _arrowsPull.Find(a => !a.gameObject.activeSelf);
         arrow.gameObject.SetActive(true);
         arrow.transform.rotation = angle;
-        arrow.SetImpulse(direction, this);
+        arrow.SetImpulse(direction, this, (int)bonusDamage);
                 
         StartCoroutine(SetShootCooldown());
     }
