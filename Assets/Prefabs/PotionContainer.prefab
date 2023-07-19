@@ -138,8 +138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   _spriteRenderer: {fileID: 1052422629242606639}
-  _animator: {fileID: 0}
-  _parentContainer: {fileID: 0}
+  _animator: {fileID: 1540083949828899746}
+  _parentContainer: {fileID: 2811496144372404163}
 --- !u!1 &2811496144372404163
 GameObject:
   m_ObjectHideFlags: 0

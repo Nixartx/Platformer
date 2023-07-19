@@ -2,24 +2,35 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Cell : MonoBehaviour
 {
-    [SerializeField] private Image image;
+    [SerializeField] private Button button;
     private Item item;
+    public Action OnUpdateCell;
 
     private void Awake()
     {
-        image.sprite = null;
+        button.image.sprite = null;
     }
 
     public void Init(Item item)
     {
-        gameObject.SetActive(true);
-        this.item = item;
-        image.sprite = item.Icon;
         
+        this.item = item;
+        if (item == null)
+        {
+            button.image.sprite = null;
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(true);
+            button.image.sprite = item.Icon;
+        }
+                
     }
 
     public void OnClickCell()
@@ -34,5 +45,7 @@ public class Cell : MonoBehaviour
         };
         
         GameManager.Instance.inventory.BuffReciever.AddBuff(buff);
+        if (OnUpdateCell != null)
+            OnUpdateCell();
     }
 }
