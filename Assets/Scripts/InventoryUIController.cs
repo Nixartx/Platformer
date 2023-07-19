@@ -15,6 +15,7 @@ public class InventoryUIController : MonoBehaviour
         for (int i = 0; i < cells.Length; i++)
         {
             cells[i] = Instantiate(cellPrefab, gameObject.transform);
+            cells[i].OnUpdateCell += UpdateInventory;
         }
         //cellPrefab.gameObject.SetActive(false);
     }
@@ -23,7 +24,16 @@ public class InventoryUIController : MonoBehaviour
     {
         if(cells == null || cells.Length <= 0)
             Init();
+        UpdateInventory();
+    }
+
+    private void UpdateInventory()
+    {
         var inventory = GameManager.Instance.inventory;
+
+        foreach (var cell in cells)
+            cell.Init(null);
+        
         for (int i = 0; i < inventory.Items.Count; i++)
         {
             if(i < cells.Length)
