@@ -3464,7 +3464,6 @@ Transform:
   - {fileID: 1286480410516387223}
   - {fileID: 80960821}
   - {fileID: 1134457580}
-  - {fileID: 8258315530228974819}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3608,6 +3607,7 @@ MonoBehaviour:
   _cooldown: 1
   _health: {fileID: 1611066586}
   _buffReciever: {fileID: 7170661103074932694}
+  playerCamera: {fileID: 1286480410516387176}
 --- !u!114 &1611066586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3621,6 +3621,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentContainer: {fileID: 996646359445464663}
+  _animator: {fileID: 1611066598}
+  deadPrefab: {fileID: 7581858674935422734, guid: ac47358dcdb59774f950e15d502187ba, type: 3}
+  _spriteRenderer: {fileID: 1504113040057544261}
   health: 100
 --- !u!114 &1611066591
 MonoBehaviour:
@@ -3677,7 +3680,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 2.05, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8258315530228974819}
   m_Father: {fileID: 5146308679318142414}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3756,7 +3760,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8225932159431082801}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.38, y: 0, z: 0}
+  m_LocalPosition: {x: 1.38, y: -2.05, z: 10}
   m_LocalScale: {x: 1.15, y: 1.15, z: 1.15}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -3770,6 +3774,6 @@ Transform:
   - {fileID: 1729478324}
   - {fileID: 62240905}
   - {fileID: 1593226186}
-  m_Father: {fileID: 5146308679318142414}
-  m_RootOrder: 3
+  m_Father: {fileID: 1286480410516387223}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

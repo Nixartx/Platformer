@@ -6,8 +6,10 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private GameObject parentContainer;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private GameObject deadPrefab;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
     public int health;
-    public Action OnTakeHit;
     public int CurrentHealth
     {
         get { return health; }
@@ -26,13 +28,15 @@ public class Health : MonoBehaviour
     public void TakeHit(int damage)
     {
         health -= damage;
-        if (OnTakeHit != null)
-            OnTakeHit();
+        _animator.SetTrigger("GetDamage");
         if (health <= 0) BecomeDead();
     }
 
     private void BecomeDead()
     {
+        _animator.SetBool("Death", true);
+        Quaternion angle = _spriteRenderer.flipX ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
+        var prefab = Instantiate(deadPrefab, transform.position, angle, null);
         Destroy(parentContainer);
     }
 }

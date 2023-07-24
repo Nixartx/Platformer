@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _cooldown = 1;
     [SerializeField] private Health _health;
     [SerializeField] private BuffReciever _buffReciever;
+    [SerializeField] private Camera playerCamera;
     public Health Health
     {
         get { return _health; }
@@ -51,12 +52,6 @@ public class Player : MonoBehaviour
         }
 
         _buffReciever.OnBuffsChanged += ApplyBuffs;
-        _health.OnTakeHit += TakeHit;
-    }
-
-    private void TakeHit()
-    {
-        _animator.SetTrigger("GetDamage");
     }
 
     public void InitCharacterUIController()
@@ -174,7 +169,13 @@ public class Player : MonoBehaviour
                 
         StartCoroutine(SetShootCooldown());
     }
-    
+
+    private void OnDestroy()
+    {
+        playerCamera.transform.parent = null;
+        playerCamera.enabled = true;
+    }
+
     private IEnumerator SetShootCooldown()
     {
         _isCooldown = true;
