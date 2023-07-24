@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private GameObject parentContainer;
     public int health;
+    public Action OnTakeHit;
     public int CurrentHealth
     {
         get { return health; }
@@ -25,6 +26,8 @@ public class Health : MonoBehaviour
     public void TakeHit(int damage)
     {
         health -= damage;
+        if (OnTakeHit != null)
+            OnTakeHit();
         if (health <= 0) BecomeDead();
     }
 

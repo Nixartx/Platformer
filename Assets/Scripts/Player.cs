@@ -51,6 +51,12 @@ public class Player : MonoBehaviour
         }
 
         _buffReciever.OnBuffsChanged += ApplyBuffs;
+        _health.OnTakeHit += TakeHit;
+    }
+
+    private void TakeHit()
+    {
+        _animator.SetTrigger("GetDamage");
     }
 
     public void InitCharacterUIController()
