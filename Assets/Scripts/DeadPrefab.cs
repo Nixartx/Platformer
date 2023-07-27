@@ -8,10 +8,10 @@ public class DeadPrefab : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(StartCorpseDestroy());
+        StartCoroutine(CorpseDestroyCooldown());
     }
 
-    IEnumerator StartCorpseDestroy()
+    IEnumerator CorpseDestroyCooldown()
     {
         yield return new WaitForSeconds(2);
         StartCoroutine(CorpseDestroy());

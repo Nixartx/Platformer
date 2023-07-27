@@ -172,8 +172,10 @@ public class Player : MonoBehaviour
 
     private void OnDestroy()
     {
-        playerCamera.transform.parent = null;
+        playerCamera.transform.SetParent(null);
         playerCamera.enabled = true;
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnPlayerDie(); 
     }
 
     private IEnumerator SetShootCooldown()

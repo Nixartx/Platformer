@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     }
     [HideInInspector] public Inventory inventory;
     [SerializeField] public GameObject inventoryUI;
+    [SerializeField] public GameObject LoseMenu;
 
     private void Awake()
     {
@@ -41,5 +42,15 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1;
             inventoryUI.SetActive(false);
         }
+    }
+
+    public void OnPlayerDie()
+    {
+        StartCoroutine(ShowLoseScreen());
+    }
+        IEnumerator ShowLoseScreen()
+    {
+        yield return new WaitForSeconds(2);
+        LoseMenu.SetActive(true);
     }
 }
