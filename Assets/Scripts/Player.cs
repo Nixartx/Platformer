@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
     private bool _isJumping;
     private bool _isFalling;
     private bool _isShooting;
+
+    private bool _isAppQuiting;
     
 
     private void Start()
@@ -170,12 +172,21 @@ public class Player : MonoBehaviour
         StartCoroutine(SetShootCooldown());
     }
 
+    private void OnApplicationQuit()
+    {
+        _isAppQuiting = true;
+    }
+
     private void OnDestroy()
     {
-        playerCamera.transform.SetParent(null);
-        playerCamera.enabled = true;
-        if (GameManager.Instance != null)
-            GameManager.Instance.OnPlayerDie(); 
+        if (!_isAppQuiting)
+        {
+            playerCamera.transform.SetParent(null);
+            playerCamera.enabled = true;
+            if (GameManager.Instance != null)
+                GameManager.Instance.OnPlayerDie();            
+        }
+         
     }
 
     private IEnumerator SetShootCooldown()
