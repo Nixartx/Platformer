@@ -29,7 +29,8 @@ public class TriggerDamage : MonoBehaviour
     {
         if (other.gameObject == _parent ||
             GameManager.Instance.coinsContainer.ContainsKey(other.gameObject) ||
-            GameManager.Instance.chestHealContainer.ContainsKey(other.gameObject))
+            GameManager.Instance.chestHealContainer.ContainsKey(other.gameObject) ||
+            GameManager.Instance.itemsContainer.ContainsKey(other.gameObject))
         {
             return;
         } 

@@ -54,7 +54,7 @@ AnimationClip:
   - time: 0
     functionName: SetDamage
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 11500000, guid: 58c9a3bff01214041a496df8158edcdb, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
