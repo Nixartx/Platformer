@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GroundDetection _groundDetection;
     [SerializeField] private Arrow _arrow;
     [SerializeField] private Transform _arrowSpawner;
+    [SerializeField] private GameObject _swordTrigger;
     [SerializeField] private float _cooldown = 1;
     [SerializeField] private Health _health;
     [SerializeField] private BuffReciever _buffReciever;
@@ -35,6 +36,9 @@ public class Player : MonoBehaviour
     private bool _isJumping;
     private bool _isFalling;
     private bool _isShooting;
+    private int  _currentAttack = 0;
+    private float _timeSinceAttack = 0;
+        
 
     private bool _isAppQuiting;
     
@@ -60,7 +64,7 @@ public class Player : MonoBehaviour
     {
         _controller = GameManager.Instance.CharacterUIController;
         _controller.JumpBtn.onClick.AddListener(JumpCall);
-        _controller.AttackBtn.onClick.AddListener(ShootCall);
+        _controller.FireBtn.onClick.AddListener(ShootCall);
     }
 
     private void ApplyBuffs()
@@ -81,6 +85,27 @@ public class Player : MonoBehaviour
         else if (_controller.RightBtn.IsPressed)
             _axisX = 1;
         else _axisX = 0;
+
+
+        _timeSinceAttack += Time.deltaTime;
+        if (_controller.AttackBtn.IsPressed && _timeSinceAttack > 0.3f)
+        {
+            _currentAttack++;
+
+            // Loop back to one after third attack
+            if (_currentAttack > 3)
+                _currentAttack = 1;
+
+            // Reset Attack combo if time since last attack is too large
+            if (_timeSinceAttack > 1.0f)
+                _currentAttack = 1;
+
+            // Call one of three attack animations "Attack1", "Attack2", "Attack3"
+            _animator.SetTrigger("Attack" + _currentAttack);
+
+            // Reset timer
+            _timeSinceAttack = 0.0f;
+        }
         
 #if UNITY_EDITOR
         if (!_controller.LeftBtn.IsPressed && !_controller.RightBtn.IsPressed)
@@ -170,6 +195,17 @@ public class Player : MonoBehaviour
         arrow.SetImpulse(direction, this, (int)bonusDamage);
                 
         StartCoroutine(SetShootCooldown());
+    }
+
+    //Starts from Player animation - Attack
+    public void Attack()
+    {
+        _swordTrigger.transform.localPosition = new Vector2
+        {
+            x = _spriteRenderer.flipX? _swordTrigger.transform.localPosition.x * -1: _swordTrigger.transform.localPosition.x,
+            y = _swordTrigger.transform.localPosition.y
+        };
+        _swordTrigger.SetActive(true);
     }
 
     private void OnApplicationQuit()

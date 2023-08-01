@@ -12,8 +12,11 @@ public class CharacterUIController : MonoBehaviour
     [SerializeField] private PressedButton rightBtn;
     public PressedButton RightBtn => rightBtn;
     
-    [SerializeField] private Button attackBtn;
-    public Button AttackBtn => attackBtn;
+    [SerializeField] private PressedButton attackBtn;
+    public PressedButton AttackBtn => attackBtn;
+
+    [SerializeField] private Button fireBtn;
+    public Button FireBtn => fireBtn;
     
     [SerializeField] private Button jumpBtn;
     public Button JumpBtn => jumpBtn;
