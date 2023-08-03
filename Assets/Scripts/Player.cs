@@ -35,9 +35,11 @@ public class Player : MonoBehaviour
     private bool _isCooldown;
     private bool _isJumping;
     private bool _isFalling;
+    private float _timeSinceFalling = 0;
     private bool _isShooting;
     private int  _currentAttack = 0;
     private float _timeSinceAttack = 0;
+    
         
 
     private bool _isAppQuiting;
@@ -85,6 +87,9 @@ public class Player : MonoBehaviour
         else if (_controller.RightBtn.IsPressed)
             _axisX = 1;
         else _axisX = 0;
+
+        if (_isFalling)
+            _timeSinceFalling += Time.deltaTime;
 
 
         _timeSinceAttack += Time.deltaTime;
@@ -169,8 +174,16 @@ public class Player : MonoBehaviour
                 _isFalling = true;    
             }
         }
+
         if (_isFalling && _groundDetection.IsGrounded)
+        {
             _isFalling = false;
+            _timeSinceFalling = 0;
+        }
+        
+        if (_timeSinceFalling > 2)
+            _health.TakeHit(_health.health);
+            
     }
 
     private void CheckArrow()
