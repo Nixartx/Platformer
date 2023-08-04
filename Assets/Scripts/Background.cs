@@ -5,6 +5,8 @@ using UnityEngine;
 public class Background : MonoBehaviour
 {
     [SerializeField] public float speed;
+    [SerializeField] private float backgroundSize;
+    [SerializeField] private bool automaticMove = false; 
     private float x;
     private float pointToEndLeft;
     private float pointToEndRight;
@@ -12,8 +14,8 @@ public class Background : MonoBehaviour
 
     void Start () {
         pointToOriginal = transform.localPosition.x;
-        pointToEndLeft = pointToOriginal - 9.14f;
-        pointToEndRight = pointToOriginal + 9.14f;
+        pointToEndLeft = pointToOriginal - backgroundSize;
+        pointToEndRight = pointToOriginal + backgroundSize;
         //x2 background speed
         speed *= 2;
     }
@@ -21,8 +23,8 @@ public class Background : MonoBehaviour
     void Update () {
     
     	x = transform.localPosition.x;
-
-        x += speed * Time.deltaTime * GameManager.Instance.PlayerMoveDirection;
+        var directionSpeed = automaticMove ? speed : speed * GameManager.Instance.PlayerMoveDirection;
+        x += directionSpeed * Time.deltaTime;
     	transform.localPosition = new Vector3 (x, transform.localPosition.y, transform.localPosition.z);
     
     	if (x <= pointToEndLeft || x >= pointToEndRight){
