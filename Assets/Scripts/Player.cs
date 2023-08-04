@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
+
 
 public class Player : MonoBehaviour
 {
@@ -40,11 +39,8 @@ public class Player : MonoBehaviour
     private int  _currentAttack = 0;
     private float _timeSinceAttack = 0;
     
-        
-
     private bool _isAppQuiting;
     
-
     private void Start()
     {
         _playerRb = GetComponent<Rigidbody2D>();

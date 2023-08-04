@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
@@ -21,8 +17,6 @@ public class Menu : MonoBehaviour
     {
         PlayerPrefs.SetString(PlayerNameKey, inputNameField.text);
     }
-
-
 
     public void OnPlayClick()
     {

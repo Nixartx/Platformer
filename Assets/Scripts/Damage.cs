@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Damage : MonoBehaviour
@@ -14,7 +11,6 @@ public class Damage : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D other)
     {
-        //_health = other.gameObject.GetComponent<Health>();
         if (GameManager.Instance.healthContainer.TryGetValue(other.gameObject, out var health))
         {
             _health = health;

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryUIController : MonoBehaviour
@@ -17,7 +14,6 @@ public class InventoryUIController : MonoBehaviour
             cells[i] = Instantiate(cellPrefab, gameObject.transform);
             cells[i].OnUpdateCell += UpdateInventory;
         }
-        //cellPrefab.gameObject.SetActive(false);
     }
 
     private void OnEnable()
