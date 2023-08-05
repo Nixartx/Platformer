@@ -635,8 +635,8 @@ GameObject:
   m_Component:
   - component: {fileID: 147505356}
   - component: {fileID: 147505355}
-  - component: {fileID: 147505354}
   - component: {fileID: 147505357}
+  - component: {fileID: 147505358}
   m_Layer: 0
   m_Name: HealChest
   m_TagString: Untagged
@@ -644,22 +644,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!70 &147505354
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147505353}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.99999994, y: 1.9999999}
-  m_Direction: 0
 --- !u!212 &147505355
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -701,8 +685,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.28773582, g: 0.49423298, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 8f19aae71337c8f438e30c714244c906, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -720,9 +704,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147505353}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.77, y: -1.58, z: -2.5750656}
-  m_LocalScale: {x: 0.5034, y: 0.5034, z: 0.5034}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -4.77, y: -1.865, z: -2.5750656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -740,6 +724,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonusHeal: 30
+--- !u!61 &147505358
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147505353}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.7228571, y: 0.76857144}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7228571, y: 0.76857144}
+  m_EdgeRadius: 0
 --- !u!114 &178658995 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4950074962112056048, guid: 36e2b48a143ab764d8f3899800d51cc9, type: 3}
