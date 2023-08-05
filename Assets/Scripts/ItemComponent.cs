@@ -34,6 +34,6 @@ public class ItemComponent : MonoBehaviour
 public enum ItemType
 {
     DamagePotion = 1,
-    ArmorPotion = 2,
-    PowerPotion = 3
+    HealthPotion = 2
+    
 }

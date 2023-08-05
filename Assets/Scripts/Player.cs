@@ -28,7 +28,6 @@ public class Player : MonoBehaviour
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
 
-    private float bonusJumpForce;
     private float bonusDamage;
     
     private bool _isCooldown;
@@ -67,13 +66,12 @@ public class Player : MonoBehaviour
 
     private void ApplyBuffs()
     {
-        var jumpForceBuff = _buffReciever.Buffs.Find(t => t.type == BuffType.Force);
         var damageBuff = _buffReciever.Buffs.Find(t => t.type == BuffType.Damage);
-        //var armorBuff = _buffReciever.Buffs.Find(t => t.type == BuffType.Armor);
-        bonusJumpForce = jumpForceBuff == null ? 0 : jumpForceBuff.additiveBinus;
         bonusDamage = damageBuff == null ? 0 : damageBuff.additiveBinus;
-        //var bonusHealth = armorBuff == null ? 0 : armorBuff.additiveBinus;
-        //_health.SetHealth((int)bonusHealth);
+        
+        var healthBuff = _buffReciever.Buffs.Find(t => t.type == BuffType.Health);
+        var bonusHealth = healthBuff == null ? 0 : healthBuff.additiveBinus;
+        _health.SetHealth((int)bonusHealth);
     }
 
     private void Update()
@@ -138,7 +136,7 @@ public class Player : MonoBehaviour
         {
             _animator.SetTrigger("StartJump");
             _isJumping = true;
-            _playerRb.AddForce(Vector2.up * (jumpForce + bonusJumpForce), ForceMode2D.Impulse);
+            _playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             _isJumpPressed = false;
         }
         StartFallTrigger();

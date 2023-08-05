@@ -20,21 +20,15 @@ MonoBehaviour:
     _value: 10
     _icon: {fileID: 1502156852, guid: 3476db18fe463524490bfc412e218584, type: 3}
   - _id: 2
-    _name: Armor Potion
-    _desc: Adds armor
-    _type: 2
-    _value: 50
-    _icon: {fileID: 1548150139, guid: 5f53b69d3e3409f479e4b6ef43a357ea, type: 3}
-  - _id: 3
-    _name: Force potion
-    _desc: Add jump strenght
+    _name: Health Potion
+    _desc: Adds health
     _type: 1
-    _value: 5
+    _value: 20
     _icon: {fileID: -1241689058, guid: 626a3f511e8c69d4194b91a153e04911, type: 3}
   currentItem:
-    _id: 2
-    _name: Armor Potion
-    _desc: Adds armor
-    _type: 2
-    _value: 50
-    _icon: {fileID: 1548150139, guid: 5f53b69d3e3409f479e4b6ef43a357ea, type: 3}
+    _id: 1
+    _name: Damage Potion
+    _desc: Add damage
+    _type: 0
+    _value: 10
+    _icon: {fileID: 1502156852, guid: 3476db18fe463524490bfc412e218584, type: 3}
