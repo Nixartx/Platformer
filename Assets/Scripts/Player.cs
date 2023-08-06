@@ -104,6 +104,8 @@ public class Player : MonoBehaviour
             AttackCall();
         
         if (Input.GetKeyDown(KeyCode.Escape))
+            GameManager.Instance.OnCallMenu();
+        if (Input.GetKeyDown(KeyCode.I))
             GameManager.Instance.OnClickPause();
 #endif
     }
