@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     [SerializeField] private GameObject deadPrefab;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     public int health;
+    private int maxHealth;
     public int CurrentHealth
     {
         get { return health; }
@@ -14,12 +15,15 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
+        maxHealth = health;
         GameManager.Instance.healthContainer.Add(gameObject,this);
     }
 
     public void SetHealth(int hp)
     {
         health += hp;
+        if (health >= maxHealth)
+            health = maxHealth;
     }
 
     public void TakeHit(int damage)
