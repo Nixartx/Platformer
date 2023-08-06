@@ -8,7 +8,7 @@ public class HealChest : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && GameManager.Instance.chestHealContainer.ContainsKey(gameObject))
         {
             Health health = other.gameObject.GetComponent<Health>();
             health.SetHealth(bonusHeal);
