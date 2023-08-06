@@ -89,21 +89,7 @@ public class Player : MonoBehaviour
         _timeSinceAttack += Time.deltaTime;
         if (_controller.AttackBtn.IsPressed && _timeSinceAttack > 0.3f)
         {
-            _currentAttack++;
-
-            // Loop back to one after third attack
-            if (_currentAttack > 3)
-                _currentAttack = 1;
-
-            // Reset Attack combo if time since last attack is too large
-            if (_timeSinceAttack > 1.0f)
-                _currentAttack = 1;
-
-            // Call one of three attack animations "Attack1", "Attack2", "Attack3"
-            _animator.SetTrigger("Attack" + _currentAttack);
-
-            // Reset timer
-            _timeSinceAttack = 0.0f;
+            AttackCall();
         }
         
 #if UNITY_EDITOR
@@ -114,6 +100,8 @@ public class Player : MonoBehaviour
             JumpCall();
         if (Input.GetKeyDown(KeyCode.F))
             ShootCall();
+        if (Input.GetKey(KeyCode.Return) && _timeSinceAttack > 0.3f)
+            AttackCall();
         
         if (Input.GetKeyDown(KeyCode.Escape))
             GameManager.Instance.OnClickPause();
@@ -154,6 +142,25 @@ public class Player : MonoBehaviour
     {
         if (!_isShooting)
             _isShooting = true;
+    }
+
+    private void AttackCall()
+    {
+        _currentAttack++;
+
+        // Loop back to one after third attack
+        if (_currentAttack > 3)
+            _currentAttack = 1;
+
+        // Reset Attack combo if time since last attack is too large
+        if (_timeSinceAttack > 1.0f)
+            _currentAttack = 1;
+
+        // Call one of three attack animations "Attack1", "Attack2", "Attack3"
+        _animator.SetTrigger("Attack" + _currentAttack);
+
+        // Reset timer
+        _timeSinceAttack = 0.0f;
     }
 
 
