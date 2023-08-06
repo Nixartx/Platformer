@@ -12,6 +12,7 @@ public class Coin : MonoBehaviour
 
     public void StartDestroy()
     {
+        GameManager.Instance.coinsContainer.Remove(gameObject);
         _animator.SetTrigger("CoinDestroy");
     }
 
