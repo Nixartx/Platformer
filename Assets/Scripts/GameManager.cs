@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
     }
     [HideInInspector] public Inventory inventory;
     [SerializeField] public GameObject inventoryUI;
-    [SerializeField] public GameObject LoseMenu;
+    [SerializeField] public GameObject loseMenu;
     private LoseMenu _loseMenu;
 
     private void Awake()
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _loseMenu = LoseMenu.GetComponent<LoseMenu>();
+        _loseMenu = loseMenu.GetComponent<LoseMenu>();
     }
 
     public void OnClickPause()
@@ -60,7 +61,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         _loseMenu.HeaderText.text = "Game Over";
-        LoseMenu.SetActive(true);
+        loseMenu.SetActive(true);
     }
 
     public void OnCallMenu()
@@ -69,11 +70,11 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
             _loseMenu.HeaderText.text = "Menu";
-            LoseMenu.SetActive(true);
+            loseMenu.SetActive(true);
         }else
         {
             Time.timeScale = 1;
-            LoseMenu.SetActive(false);
+            loseMenu.SetActive(false);
         }
     }
 }

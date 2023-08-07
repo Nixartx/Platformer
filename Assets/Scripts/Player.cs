@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,7 +38,8 @@ public class Player : MonoBehaviour
     private bool _isShooting;
     private int  _currentAttack = 0;
     private float _timeSinceAttack = 0;
-    
+
+    private bool _isPlayerDisabled;
     private bool _isAppQuiting;
     
     private void Start()
@@ -229,9 +231,14 @@ public class Player : MonoBehaviour
         _isAppQuiting = true;
     }
 
+    private void OnDisable()
+    {
+        _isPlayerDisabled = true;
+    }
+
     private void OnDestroy()
     {
-        if (!_isAppQuiting)
+        if (!_isAppQuiting && !_isPlayerDisabled)
         {
             playerCamera.transform.SetParent(null);
             playerCamera.enabled = true;

@@ -11,11 +11,13 @@ public class LoseMenu : MonoBehaviour
     public void OnRestartClick()
     {
         SceneManager.LoadScene(1);
+        Time.timeScale = 1;
     }
 
     public void OnMenuClick()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
     
     public void OnExitClick()
