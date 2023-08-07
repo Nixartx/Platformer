@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        LoseMenu _loseMenu = LoseMenu.GetComponent<LoseMenu>();
+        _loseMenu = LoseMenu.GetComponent<LoseMenu>();
     }
 
     public void OnClickPause()

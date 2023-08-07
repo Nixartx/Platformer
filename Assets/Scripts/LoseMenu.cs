@@ -7,6 +7,7 @@ public class LoseMenu : MonoBehaviour
     [SerializeField] private TMP_Text _headerText;
     public TMP_Text HeaderText => _headerText;
 
+
     public void OnRestartClick()
     {
         SceneManager.LoadScene(1);
