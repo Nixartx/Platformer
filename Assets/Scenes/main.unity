@@ -5369,6 +5369,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1090896513}
     - target: {fileID: 4950074962112056048, guid: 36e2b48a143ab764d8f3899800d51cc9, type: 3}
+      propertyPath: _playerCamera
+      value: 
+      objectReference: {fileID: 2014371449}
+    - target: {fileID: 4950074962112056048, guid: 36e2b48a143ab764d8f3899800d51cc9, type: 3}
       propertyPath: CharacterUIController
       value: 
       objectReference: {fileID: 493349839}

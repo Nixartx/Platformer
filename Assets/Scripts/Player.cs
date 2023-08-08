@@ -21,7 +21,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float _cooldown = 1;
     [SerializeField] private Health _health;
     [SerializeField] private BuffReciever _buffReciever;
-    [SerializeField] private Camera playerCamera;
     public Health Health
     {
         get { return _health; }
@@ -39,9 +38,6 @@ public class Player : MonoBehaviour
     private int  _currentAttack = 0;
     private float _timeSinceAttack = 0;
 
-    private bool _isPlayerDisabled;
-    private bool _isAppQuiting;
-    
     private void Start()
     {
         _playerRb = GetComponent<Rigidbody2D>();
@@ -226,27 +222,6 @@ public class Player : MonoBehaviour
         _swordTrigger.SetActive(true);
     }
 
-    private void OnApplicationQuit()
-    {
-        _isAppQuiting = true;
-    }
-
-    private void OnDisable()
-    {
-        _isPlayerDisabled = true;
-    }
-
-    private void OnDestroy()
-    {
-        if (!_isAppQuiting && !_isPlayerDisabled)
-        {
-            playerCamera.transform.SetParent(null);
-            playerCamera.enabled = true;
-            if (GameManager.Instance != null)
-                GameManager.Instance.OnPlayerDie();            
-        }
-         
-    }
 
     private IEnumerator SetShootCooldown()
     {

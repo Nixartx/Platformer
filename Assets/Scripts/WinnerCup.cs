@@ -7,7 +7,6 @@ public class WinnerCup : MonoBehaviour
 {
     [SerializeField] private GameObject loseMenu;
     [SerializeField] private GameObject winner;
-    [SerializeField] private Camera playerCamera;
     private LoseMenu _loseMenu;
 
     private void Start()
@@ -19,11 +18,11 @@ public class WinnerCup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerCamera.transform.SetParent(null);
-            playerCamera.enabled = true;
+            GameManager.Instance.UnbindCamera();
             winner.SetActive(false);
             _loseMenu.HeaderText.text = "Victory!";
             loseMenu.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 }

@@ -38,6 +38,7 @@ public class Health : MonoBehaviour
         _animator.SetBool("Death", true);
         Quaternion angle = _spriteRenderer.flipX ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
         var prefab = Instantiate(deadPrefab, transform.position, angle, null);
+        GameManager.Instance.OnPlayerDie();
         Destroy(parentContainer);
     }
 }

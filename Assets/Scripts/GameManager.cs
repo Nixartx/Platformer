@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public Inventory inventory;
     [SerializeField] public GameObject inventoryUI;
     [SerializeField] public GameObject loseMenu;
+    [SerializeField] private Camera _playerCamera;
     private LoseMenu _loseMenu;
 
     private void Awake()
@@ -39,6 +40,12 @@ public class GameManager : MonoBehaviour
         _loseMenu = loseMenu.GetComponent<LoseMenu>();
     }
 
+    public void UnbindCamera()
+    {
+        _playerCamera.transform.SetParent(null);
+        _playerCamera.enabled = true;
+    }
+    
     public void OnClickPause()
     {
         if (Time.timeScale > 0)
@@ -54,6 +61,7 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayerDie()
     {
+        UnbindCamera();
         StartCoroutine(ShowLoseScreen());
     }
     
