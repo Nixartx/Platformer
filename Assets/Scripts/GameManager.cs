@@ -30,6 +30,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Camera _playerCamera;
     private LoseMenu _loseMenu;
 
+    [SerializeField] public AudioSource hitSwordSound;
+    [SerializeField] private AudioSource _loseSound;
+    [SerializeField] public AudioSource winnerSound;
+    [SerializeField] public AudioSource pickUpSound;
     private void Awake()
     {
         Instance = this;
@@ -69,6 +73,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         _loseMenu.HeaderText.text = "Game Over";
+        _loseSound.Play();
         loseMenu.SetActive(true);
     }
 

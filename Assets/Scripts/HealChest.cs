@@ -24,6 +24,7 @@ public class HealChest : MonoBehaviour
     public void StartDestroy()
     {
         GameManager.Instance.chestHealContainer.Remove(gameObject);
+        GameManager.Instance.pickUpSound.Play();
         _animator.SetTrigger("HealChestDestroy");
     }
 

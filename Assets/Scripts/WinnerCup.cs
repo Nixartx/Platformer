@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WinnerCup : MonoBehaviour
@@ -22,6 +19,7 @@ public class WinnerCup : MonoBehaviour
             winner.SetActive(false);
             _loseMenu.HeaderText.text = "Victory!";
             loseMenu.SetActive(true);
+            GameManager.Instance.winnerSound.Play();
             Time.timeScale = 0;
         }
     }

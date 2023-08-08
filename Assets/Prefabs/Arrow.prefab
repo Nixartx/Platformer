@@ -148,7 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f6198014fedae4fabe08a3ae552282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 814859811564683384}
   _rigidbody: {fileID: 9168308225650171294}
   _force: 10
   _lifeTime: 3

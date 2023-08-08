@@ -126,4 +126,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loseMenu: {fileID: 0}
   winner: {fileID: 0}
-  playerCamera: {fileID: 0}

@@ -30,11 +30,15 @@ public class TriggerDamage : MonoBehaviour
             GameManager.Instance.itemsContainer.ContainsKey(other.gameObject))
         {
             return;
-        } 
-            
-        
+        }
+
+
         if (GameManager.Instance.healthContainer.TryGetValue(other.gameObject, out var health))
+        {
+            GameManager.Instance.hitSwordSound.Play();
             health.TakeHit(_damage);
+        }
+            
 
         if (_isDestroyAfterCollision)
         {

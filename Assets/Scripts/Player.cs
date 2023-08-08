@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 public class Player : MonoBehaviour
@@ -21,6 +22,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float _cooldown = 1;
     [SerializeField] private Health _health;
     [SerializeField] private BuffReciever _buffReciever;
+    [SerializeField] private AudioSource _swordSwishSound;
+    [SerializeField] private AudioSource _jumpSound;
+
     public Health Health
     {
         get { return _health; }
@@ -122,6 +126,7 @@ public class Player : MonoBehaviour
         _isJumping = _isJumping && !_groundDetection.IsGrounded;
         if (_isJumpPressed && _groundDetection.IsGrounded)
         {
+            _jumpSound.Play();
             _animator.SetTrigger("StartJump");
             _isJumping = true;
             _playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -157,6 +162,7 @@ public class Player : MonoBehaviour
             _currentAttack = 1;
 
         // Call one of three attack animations "Attack1", "Attack2", "Attack3"
+        _swordSwishSound.Play();
         _animator.SetTrigger("Attack" + _currentAttack);
 
         // Reset timer

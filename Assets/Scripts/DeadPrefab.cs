@@ -4,9 +4,11 @@ using UnityEngine;
 public class DeadPrefab : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private AudioSource _deathSound;
 
     void Start()
     {
+        _deathSound.Play();
         StartCoroutine(CorpseDestroyCooldown());
     }
 

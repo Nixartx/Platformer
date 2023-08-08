@@ -5,7 +5,10 @@ public class Health : MonoBehaviour
     [SerializeField] private GameObject parentContainer;
     [SerializeField] private Animator _animator;
     [SerializeField] private GameObject deadPrefab;
+
+    [SerializeField] private bool isPlayersHealth;
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private AudioSource _hitDamageSound;
     public int health;
     private int maxHealth;
     public int CurrentHealth
@@ -29,6 +32,7 @@ public class Health : MonoBehaviour
     public void TakeHit(int damage)
     {
         health -= damage;
+        _hitDamageSound.Play();
         _animator.SetTrigger("GetDamage");
         if (health <= 0) BecomeDead();
     }
@@ -38,7 +42,8 @@ public class Health : MonoBehaviour
         _animator.SetBool("Death", true);
         Quaternion angle = _spriteRenderer.flipX ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
         var prefab = Instantiate(deadPrefab, transform.position, angle, null);
-        GameManager.Instance.OnPlayerDie();
+        if (isPlayersHealth)
+            GameManager.Instance.OnPlayerDie();
         Destroy(parentContainer);
     }
 }

@@ -23,6 +23,7 @@ public class ItemComponent : MonoBehaviour
     public void StartDestroy()
     {
         GameManager.Instance.itemsContainer.Remove(gameObject);
+        GameManager.Instance.pickUpSound.Play();
         _animator.SetTrigger("PotionDestroy");
     }
     

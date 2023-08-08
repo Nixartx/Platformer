@@ -22,8 +22,12 @@ public class Damage : MonoBehaviour
     //Invoke in animation
     public void SetDamage()
     {
-        if (_health!=null)
+        if (_health != null)
+        {
             _health.TakeHit(damage);
+            GameManager.Instance.hitSwordSound.Play();
+        }
+            
         _health = null;
         _direction = 0;
         _animator.SetFloat("Direction", 0);
