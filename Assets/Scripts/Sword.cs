@@ -7,10 +7,11 @@ public class Sword : MonoBehaviour, IObgectDestroy
     [SerializeField] private float _lifeTime;
     private Vector3 _defaultPosition;
 
-    private void Start()
+    private void Awake()
     {
         _defaultPosition = transform.localPosition;
         _triggerDamage.Init(this);
+        gameObject.SetActive(false);
     }
 
     private void OnEnable()

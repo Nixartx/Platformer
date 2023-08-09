@@ -222,7 +222,7 @@ public class Player : MonoBehaviour
     {
         _swordTrigger.transform.localPosition = new Vector2
         {
-            x = _spriteRenderer.flipX? _swordTrigger.transform.localPosition.x * -1: _swordTrigger.transform.localPosition.x,
+            x = _spriteRenderer.flipX? _swordTrigger.transform.localPosition.x * -1.6f: _swordTrigger.transform.localPosition.x,
             y = _swordTrigger.transform.localPosition.y
         };
         _swordTrigger.SetActive(true);
