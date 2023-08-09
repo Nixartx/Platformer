@@ -14,8 +14,9 @@ public class HealthBar : MonoBehaviour
         lastHealth = player.Health.CurrentHealth;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        delta += Time.fixedDeltaTime/10;
         if(Mathf.Abs(lastHealth - player.Health.CurrentHealth) < delta)
             lastHealth = player.Health.CurrentHealth;
         

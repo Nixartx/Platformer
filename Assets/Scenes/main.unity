@@ -5354,6 +5354,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 482034328, guid: 36e2b48a143ab764d8f3899800d51cc9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1034504523, guid: 36e2b48a143ab764d8f3899800d51cc9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 12396876082365399, guid: 36e2b48a143ab764d8f3899800d51cc9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4787132326533408197, guid: 36e2b48a143ab764d8f3899800d51cc9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4950074962112056048, guid: 36e2b48a143ab764d8f3899800d51cc9, type: 3}
       propertyPath: loseMenu
       value: 
