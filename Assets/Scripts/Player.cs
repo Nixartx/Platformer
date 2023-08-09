@@ -93,6 +93,8 @@ public class Player : MonoBehaviour
         {
             AttackCall();
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+            GameManager.Instance.OnCallMenu();
         
 #if UNITY_EDITOR
         if (!_controller.LeftBtn.IsPressed && !_controller.RightBtn.IsPressed)
@@ -105,8 +107,6 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.Return) && _timeSinceAttack > 0.3f)
             AttackCall();
         
-        if (Input.GetKeyDown(KeyCode.Escape))
-            GameManager.Instance.OnCallMenu();
         if (Input.GetKeyDown(KeyCode.I))
             GameManager.Instance.OnClickPause();
 #endif

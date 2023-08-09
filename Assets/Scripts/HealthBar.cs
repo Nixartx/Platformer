@@ -5,6 +5,7 @@ public class HealthBar : MonoBehaviour
 {
     [SerializeField] private Image healthImage;
     [SerializeField] private float delta;
+    private float dynamicDelta;
     private Player player;
     private float lastHealth;
 
@@ -14,16 +15,17 @@ public class HealthBar : MonoBehaviour
         lastHealth = player.Health.CurrentHealth;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if(Mathf.Abs(lastHealth - player.Health.CurrentHealth) < delta)
+        dynamicDelta = delta * Time.fixedDeltaTime;
+        if(Mathf.Abs(lastHealth - player.Health.CurrentHealth) < dynamicDelta)
             lastHealth = player.Health.CurrentHealth;
         
         if (lastHealth > player.Health.CurrentHealth)
-            lastHealth -= delta;
+            lastHealth -= dynamicDelta ;
 
         if (lastHealth < player.Health.CurrentHealth)
-            lastHealth += delta;
+            lastHealth += dynamicDelta;
         
         healthImage.fillAmount = lastHealth/100f;
     }

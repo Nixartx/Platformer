@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FPSController : MonoBehaviour
 {
-    void Awake()
+    void Start()
     {
         Application.targetFrameRate = -1;
         QualitySettings.vSyncCount = 0;
